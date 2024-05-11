@@ -7,7 +7,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(158, 35, 235);
+    background-color: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
