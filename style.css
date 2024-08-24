@@ -1,10 +1,13 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
-body{
+
+
+body {
     width: 100vw;
     height: 100vh;
     background-color: #011638;
@@ -12,66 +15,87 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+    position: relative;
 }
 
-.container{
+
+.container {
     background-color: #eec643;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.gen{
+
+.gen {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.txt{
+
+.txt {
     height: 40px;
     padding-left: 10px;
     font-size: 1.1rem;
-    font-family: 'Courier New', Courier, monospace;
-    border: #000 solid 2px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    outline: none;
 }
 
-.genBtn{
+
+.genBtn {
     height: 40px;
     width: 110px;
     font-size: 1.2rem;
     cursor: pointer;
     background-color: #fff;
-    border: #000 solid 2px;
+    border: 2px solid #000;
+    border-radius: 5px; 
 }
 
-.dowBtn{
+
+.dowBtn {
     padding: 8px 20px;
     background-color: #fff;
     display: none;
-    border: #000 solid 2px;
+    border: 2px solid #000;
     text-decoration: none;
     font-size: 1.2rem;
     color: #000;
+    border-radius: 5px; 
 }
 
-@media (max-width:382px) {
-    .gen{
-        gap: 2px;
+.footer{
+    color: #fff;
+    font-size: 0.5rem;
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;
+    padding: 40px 0px;
+}
+
+.footer > h1{
+    text-align: center;
+    font-weight: 500;
+}
+
+
+@media (max-width: 382px) {
+    .gen {
+        gap: 5px;
     }
-    .txt{
-        width: 180px;
+    .txt {
+        width: 150px;
         padding-left: 5px;
         font-size: 1rem;
     }
-    .genBtn{
-        font-size: 1rem;
-    }
-    .dowBtn{
+    .genBtn, .dowBtn {
         font-size: 1rem;
     }
 }
