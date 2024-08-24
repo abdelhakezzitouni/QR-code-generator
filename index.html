@@ -1,26 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <!-- ---Css Link--- -->
+    <title>مولد رمز QR</title>
+    <!-- ---رابط CSS--- -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
         <div class="gen">
-            <input type="text" class="txt">
-            <button class="genBtn">Generate</button>
+            <input type="text" class="txt" placeholder="أدخل النص هنا">
+            <button class="genBtn">توليد</button>
         </div>
         <div class="qrBody"></div>
-        <a href="#" class="dowBtn" download="QR_Code.png">Download</a>
+        <a href="#" class="dowBtn" download="QR_Code.png" style="display: none;">تنزيل</a>
     </div>
     
 
-    <!-- ---JavaScript Link--- -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" ></script>
-    <script src="./app.js"></script>
+    <!-- ---رابط JavaScript--- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        let txt = document.querySelector('.txt');
+        let genBtn = document.querySelector('.genBtn');
+        let qrBody = document.querySelector('.qrBody');
+        let dowBtn = document.querySelector('.dowBtn');
+
+        genBtn.addEventListener('click', () => {
+            if (txt.value.length > 0) {
+                generateQR();
+                dowBtn.style.display = 'block'; // عرض زر التنزيل بعد توليد QR
+            }
+        });
+
+        const generateQR = () => {
+            qrBody.innerHTML = '';
+            new QRCode(qrBody, {
+                text: txt.value,
+                height: 260,
+                width: 260,
+                colorLight: '#fff',
+                colorDark: '#000'
+            });
+
+            // بعد توليد الـ QR، نحتاج إلى تأخير قصير قبل ضبط رابط التنزيل
+            setTimeout(() => {
+                let canvas = qrBody.querySelector('canvas');
+                if (canvas) {
+                    dowBtn.setAttribute('href', canvas.toDataURL('image/png'));
+                }
+            }, 100); // تأخير قصير لضمان أن الصورة تم إنشاؤها بالكامل
+        };
+
+        dowBtn.addEventListener('click', () => {
+            // لا حاجة لتحديث href هنا لأننا فعلنا ذلك في generateQR
+        });
+    </script>
 </body>
 </html>
